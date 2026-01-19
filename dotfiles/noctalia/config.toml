@@ -1,0 +1,153 @@
+[bar.default]
+center = [ "media", "group:g4", "group:g5" ]
+concave_edge_corners = false
+end = [ "tray", "group:g3", "group:g1", "group:g2" ]
+margin_ends = 2
+position = "bottom"
+start = [ "group:g6" ]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "cpu", "ram" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "battery", "control-center" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "clipboard", "notifications" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g4"
+    members = [ "clock", "weather" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g5"
+    members = [ "bar", "status" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g6"
+    members = [ "launcher", "taskbar" ]
+    opacity = 1.0
+    padding = 6.0
+
+[location]
+address = "Nansha, China"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 853.0
+    cy = 944.74249267578125
+    output = "eDP-1"
+    placement_height = 1066.0
+    placement_width = 1706.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+temperature_night = 4800
+
+[plugin_settings."davemhammer/tailscale"]
+manager_placement = "attached"
+
+[plugins]
+enabled = [ "davemhammer/tailscale", "icefish/phone-connect", "noctalia/notes" ]
+
+[shell]
+telemetry_enabled = true
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Oxocarbon"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+[wallpaper.default]
+path = "/nix/store/1gf3dzgh253w3rzv123cwfda9wgi799j-noctalia-5.2.0/share/noctalia/assets/noctalia-wallpaper.png"
+
+[wallpaper.last]
+path = "/nix/store/1gf3dzgh253w3rzv123cwfda9wgi799j-noctalia-5.2.0/share/noctalia/assets/noctalia-wallpaper.png"
+
+[widget.bar]
+type = "icefish/phone-connect:bar"
+
+[widget.clock]
+format = "{:%H:%M·%a %d}"
+
+[widget.media]
+capsule = true
+hide_when_no_media = true
+
+[widget.status]
+show_counts = false
+type = "davemhammer/tailscale:status"
+
+[widget.taskbar]
+group_by_workspace = true
+hide_empty_workspaces = true
+
+[widget.tray]
+capsule = true
