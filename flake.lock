@@ -1,0 +1,177 @@
+{
+  "nodes": {
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1795601684,
+        "narHash": "sha256-82Re0lBl8qLEPnDYKjf+p0bw5JzlVXq9O+3q0KnAagI=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "d8561c05d09cd22d175b0cb50de634a4214a4c3e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
+    "fcitx5-vinput": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "sherpa-onnx": "sherpa-onnx"
+      },
+      "locked": {
+        "lastModified": 1791980447,
+        "narHash": "sha256-jZxyxDEUYuGDh7c27yiGYn6BW0KzfgwX+HW9nXmvCoo=",
+        "owner": "xifan2333",
+        "repo": "fcitx5-vinput",
+        "rev": "ac545c6c5ec1105f0c4ec8b54b21dd3a79a544a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xifan2333",
+        "ref": "v2.4.2",
+        "repo": "fcitx5-vinput",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795713076,
+        "narHash": "sha256-GUY/RHSSnAJKKI3xk7xrSXrsXFgIOgFrRJOD4uub5J8=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "361da94fb55c67094ec47322d2757d6616a0de92",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "mangobar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795706047,
+        "narHash": "sha256-N2gLTBoNF2TKQn7IHWZCl86RYp6xFLCELm+oUxZ4IyU=",
+        "owner": "mangowm",
+        "repo": "mangobar",
+        "rev": "9b815beb28f611ffe9797787738222e305dd7713",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mangowm",
+        "repo": "mangobar",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1795371335,
+        "narHash": "sha256-3Xq+XlDu5l+UJ0cc+Jigs84+tz7Qu92NgXVHgJwC52M=",
+        "rev": "619c39f6eac5d1ed6b8f073a9414baf7034b2356",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1126808.619c39f6eac5/nixexprs.tar.zst"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1791594108,
+        "narHash": "sha256-XK4KceonkwD8LuMAt/vNrz982mXJM5jeHAxMwsUXXAQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6510408d147d8c5e6d76043e899e9251756f6a75",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1795234589,
+        "narHash": "sha256-f/VVvxf5RsQgWVhUtefoca5ktVg0DA2bnkMOcmSnozo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "catppuccin": "catppuccin",
+        "fcitx5-vinput": "fcitx5-vinput",
+        "home-manager": "home-manager",
+        "mangobar": "mangobar",
+        "nixpkgs": "nixpkgs_3",
+        "unm": "unm"
+      }
+    },
+    "sherpa-onnx": {
+      "inputs": {
+        "nixpkgs": [
+          "fcitx5-vinput",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785564218,
+        "narHash": "sha256-B1/qLagKXemMgyrmd7RqPEgz2polrZMUkeBT1dv3hso=",
+        "owner": "xifan2333",
+        "repo": "sherpa-onnx-flake",
+        "rev": "a8ef134239c923420becfa6870538dcc8e9c8eb8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xifan2333",
+        "repo": "sherpa-onnx-flake",
+        "type": "github"
+      }
+    },
+    "unm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795586948,
+        "narHash": "sha256-THKzkp25NAICY94+kS7l2L9Z1qfp+ixhIcQsS2rqoYY=",
+        "owner": "UnblockNeteaseMusic",
+        "repo": "server",
+        "rev": "911aa6886a0105ad02aa028c612b308460372668",
+        "type": "github"
+      },
+      "original": {
+        "owner": "UnblockNeteaseMusic",
+        "ref": "enhanced",
+        "repo": "server",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
