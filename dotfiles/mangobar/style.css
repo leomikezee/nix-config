@@ -1,0 +1,114 @@
+@define-color color-base #1e1e2e;
+@define-color color-surface0 #313244;
+@define-color color-surface1 #45475a;
+@define-color color-surface2 #585b70;
+@define-color color-subtext0 #a6adc8;
+@define-color color-text #cdd6f4;
+@define-color color-blue #89b4fa;
+@define-color color-lavender #b4befe;
+@define-color color-sapphire #74c7ec;
+@define-color color-teal #94e2d5;
+@define-color color-green #a6e3a1;
+@define-color color-peach #fab387;
+@define-color color-red #f38ba8;
+
+* {
+    font-family: "Fira Code";
+    font-size: 14px;
+    font-weight: bold;
+    color: @color-text;
+    background-color: @color-surface0;
+    padding: 0px 10px;
+    margin: 4px 1px;
+    border-radius: 100px;
+}
+
+#bar {
+    background: none;
+    margin: 4px 8px;
+}
+#tags {
+    padding: 0px 12px;
+    margin: 0px 2px;
+}
+
+#tags.active {
+    background-color: @color-blue;
+    color: @color-base;
+}
+#tags.urgent {
+    background-color: @color-red;
+    color: @color-base;
+}
+#tags.empty {
+    background-color: @color-base;
+    color: @color-subtext0;
+}
+
+#overview {
+    background-color: @color-lavender;
+    color: @color-base;
+}
+
+#title {
+    background-color: @color-surface1;
+    color: @color-text;
+}
+
+#clock {
+    background-color: @color-surface1;
+    color: @color-text;
+}
+#clock.date {
+    background-color: @color-lavender;
+    color: @color-base;
+}
+#cpu {
+    padding: 0px 15px;
+    background-color: @color-surface1;
+    color: @color-text;
+}
+#mem {
+    background-color: @color-teal;
+    color: @color-base;
+}
+#volume {
+    background-color: @color-green;
+    color: @color-base;
+}
+#network {
+    background-color: @color-blue;
+    color: @color-base;
+}
+#network.wifi {
+    background-color: @color-sapphire;
+    color: @color-base;
+}
+#network.disconnected {
+    background-color: @color-red;
+    color: @color-base;
+}
+#custom-power {
+    margin: 0px 5px;
+    background-color: @color-peach;
+    color: @color-base;
+}
+
+#tray {
+    background-color: @color-surface1;
+    padding: 0px 15px;
+}
+
+menu {
+    background-color: @color-base;
+    border-color: @color-surface2;
+    border-radius: 10px;
+    font-size: 14px;
+}
+menuitem {
+    color: @color-text;
+}
+menuitem:hover {
+    color: @color-base;
+    background-color: @color-blue;
+}
