@@ -1,0 +1,10 @@
+font=Fira Code 10
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#fab387
+border-size=2
+border-radius=8
+default-timeout=5000
+
+[mode=do-not-disturb]
+invisible=1
