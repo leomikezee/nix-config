@@ -1,0 +1,175 @@
+{
+  config,
+  pkgs,
+  vars,
+  inputs,
+  ...
+}: let
+  fcitx5-vinput = inputs.fcitx5-vinput.packages."${pkgs.stdenv.hostPlatform.system}".default;
+in {
+  nixpkgs.overlays = [
+    (_: prev: {
+      librime = prev.librime.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [../patches/rime-fix-input.patch];
+      });
+    })
+  ];
+
+  environment.systemPackages = with pkgs; [
+    adwaita-icon-theme
+    fcitx5-vinput
+    moonlight-qt
+    nautilus
+    wl-clipboard-rs
+    xdg-terminal-exec
+    xwayland-satellite
+  ];
+
+  environment.sessionVariables = {
+    XIM = ["fcitx"];
+    GTK_IM_MODULE = ["fcitx"];
+    QT_IM_MODULE = ["fcitx"];
+    XMODIFIERS = ["@im=fcitx"];
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+  };
+
+  # for waydroid
+  boot.kernelModules = ["binder_linux"];
+
+  virtualisation = {
+    libvirtd.enable = true;
+    waydroid = {
+      enable = true;
+      package = pkgs.waydroid-nftables;
+    };
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      adwaita-fonts
+      fira-code
+      nerd-fonts.symbols-only
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      (pkgs.runCommand "pingfang-sc" {
+          src = pkgs.fetchFromGitHub {
+            owner = "shenweiyan";
+            repo = "PingFangSC-Fonts";
+            rev = "b9484836f50a585a821469f29e2e5c4feaf86c7d";
+            hash = "sha256-U7lvls98TFvwuLm58aRj6bEtpT7pNk5N/3te0MumDb4=";
+          };
+        } ''
+          mkdir -p $out/share/fonts/truetype
+          cp $src/*.ttf $out/share/fonts/truetype/
+        '')
+    ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "*";
+  };
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      ignoreUserConfig = true;
+      addons = with pkgs; [
+        kdePackages.fcitx5-qt
+        fcitx5-fluent
+        fcitx5-gtk
+        (fcitx5-rime.override {
+          rimeDataPkgs = [
+            pkgs.rime-ice
+          ];
+        })
+        fcitx5-vinput
+      ];
+      settings = {
+        globalOptions = {
+          "Hotkey/TriggerKeys"."0" = "Super+space";
+        };
+        inputMethod = {
+          "Groups/0" = {
+            Name = "Default";
+            "Default Layout" = "us";
+            DefaultIM = "keyboard-us";
+          };
+          "Groups/0/Items/0".Name = "keyboard-us";
+          "Groups/0/Items/1".Name = "rime";
+        };
+      };
+    };
+  };
+
+  # services.displayManager.dms-greeter = {
+  #   enable = true;
+  #   compositor.name = "niri";
+  #   configHome = "/home/${vars.username}";
+  #   logs = {
+  #     save = true;
+  #     path = "/tmp/dms-greeter.log";
+  #   };
+  # };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd niri-session";
+        user = "greeter";
+      };
+      # initial_session = {
+      #   command = "niri-session";
+      #   user = vars.username;
+      # };
+    };
+  };
+
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+
+    # FFmpeg loads the NVIDIA CUDA/NVENC libraries with dlopen(). Sunshine's
+    # capability wrapper runs in secure-execution mode, so LD_LIBRARY_PATH is
+    # ignored; put the NixOS driver link in the executable's RUNPATH instead.
+    package =
+      pkgs.runCommand "${pkgs.sunshine.name}-driver-runpath" {
+        nativeBuildInputs = [pkgs.patchelf];
+        inherit (pkgs.sunshine) meta;
+      } ''
+        mkdir -p "$out"
+        cp -a ${pkgs.sunshine}/. "$out/"
+        chmod u+w "$out/bin/sunshine"
+        patchelf --add-rpath ${pkgs.addDriverRunpath.driverLink}/lib "$out/bin/sunshine"
+      '';
+  };
+
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
+
+  programs.dms-shell.enable = true;
+  programs.kdeconnect.enable = true;
+  programs.niri.enable = true;
+  programs.nm-applet.enable = true;
+  programs.virt-manager.enable = true;
+}
